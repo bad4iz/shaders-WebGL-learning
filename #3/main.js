@@ -1,7 +1,7 @@
 const vertexShaderSource = `
 void main(void) {
   gl_Position = vec4(0.0, 0.0, 0.0, 1.0);
-  gl_PointSize = 10.0;
+  gl_PointSize = 30.0;
 }
 `;
 
@@ -14,10 +14,10 @@ void main(void) {
 const canvas = document.querySelector("canvas");
 const gl = canvas.getContext("webgl");
 
+
 // создаем пустой объект шейдера и возвращает ненулевое значение, по которому на него можно ссылаться
 const vertexShader = gl.createShader(gl.VERTEX_SHADER);
 // Записываем исходный код шейдера в шейдерную программу
-// Установливаем шейдерную программу
 gl.shaderSource(vertexShader, vertexShaderSource);
 // Скомпилируем шейдер
 gl.compileShader(vertexShader);
@@ -27,9 +27,7 @@ const fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
 gl.shaderSource(fragmentShader, fragmentShaderSource);
 gl.compileShader(fragmentShader);
 
-
-
-// создает и инициализирует WebGLProgram объект.
+// создает и инициализирует WebGLProgram объект программы.
 const program = gl.createProgram();
 
 // Прикрепляем уже существующие шейдеры
@@ -39,11 +37,11 @@ gl.attachShader(program, fragmentShader);
 // Связываем программный объект
 gl.linkProgram(program);
 
+// Устанавливаем программу
 gl.useProgram(program);
-gl.program = program;
 
 // Указываем цвет для очистки <canvas>
-gl.clearColor(0.0, 0.1, 1.0, 1.0);
+gl.clearColor(0.0, 1., 1.0, 1.0);
 
 // Очищаем <canvas>
 gl.clear(gl.COLOR_BUFFER_BIT);
