@@ -3,7 +3,7 @@ uniform vec2 u_Resolution;
 uniform float u_Time;
 uniform vec2 u_Mouse;
 
-const float MAX_ITERATIONS = 12800000.0;
+const float MAX_ITERATIONS = 1280.0;
 
 float mandelbrotSet(vec2 position) {
     vec2 c = 5.0 * position - vec2(0.7,0.0);
