@@ -10,15 +10,24 @@ const u_Resolution = gl.getUniformLocation(program, "u_Resolution");
 gl.uniform2f(u_Resolution, canvas.width, canvas.height);
 const u_Time = gl.getUniformLocation(program, 'u_Time');
 
+// получаем ссылку u_Translation
+const u_Translation = gl.getUniformLocation(program, 'u_Translation');
+// записываем в u_Translation
+gl.uniform2f(u_Translation, 0.5, 0.0 )
+
+gl.clear(gl.COLOR_BUFFER_BIT);
+// Рисуем треугольник
+gl.drawArrays(gl.TRIANGLE_STRIP, 0, n);
 
 
+//
 const tick = function(timer) {
   // Очищаем <canvas>
+
   gl.clear(gl.COLOR_BUFFER_BIT);
   // Рисуем треугольник
   gl.drawArrays(gl.TRIANGLE_STRIP, 0, n);
   gl.uniform1f(u_Time, timer/1000 );
-
   requestAnimationFrame(tick);   // Request that the browser ?calls tick
 };
 tick();
@@ -31,12 +40,11 @@ tick();
 /////////////////////////////////////////////////
 function initBuffer(){
   const array = [
-    1, 1,
-    -1, 1,
+    0.0, 0.5,
+    -0.2, 0.2,
     // -0.4,0.0,
     // 0.4,0.0,
-    1, -1,
-    -1, -1,
+    0.2, 0.2,
   ];
   const vertex = new Float32Array(array);
 
